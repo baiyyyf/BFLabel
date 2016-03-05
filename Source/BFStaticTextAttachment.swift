@@ -15,7 +15,9 @@ public class BFStaticTextAttachment: NSTextAttachment {
     override public func attachmentBoundsForTextContainer(textContainer: NSTextContainer?,
         proposedLineFragment lineFrag: CGRect, glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
             let lineHeight = lineFrag.size.height
-            let size = self.image!.size
-            return CGRect(x: 0, y: lineHeight*systemFontLineHeightToDecender, width: size.width /  size.height * lineHeight, height: lineHeight)
+            if let size = self.image?.size {
+                return CGRect(x: 0, y: lineHeight*systemFontLineHeightToDecender, width: size.width /  size.height * lineHeight, height: lineHeight)
+            }
+            return CGRect.zero
     }
 }

@@ -71,7 +71,7 @@ public class BFLabel: UIView {
     
     public var autoSizeToFit = false
     
-    public var drawManually = true
+    public var drawManually = false
     
     public var drawAsynchronously = false
     
@@ -146,6 +146,14 @@ public class BFLabel: UIView {
     
     override public func systemLayoutSizeFittingSize(targetSize: CGSize) -> CGSize {
         return sizeThatFits(targetSize)
+    }
+    
+    override public func systemLayoutSizeFittingSize(targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        return CGSize(width: 375, height: 300)
+    }
+    
+    override public func intrinsicContentSize() -> CGSize {
+        return sizeThatFits(CGSize(width: prefferedLayoutWidth, height: 0))
     }
     
     //MARK: - Method
